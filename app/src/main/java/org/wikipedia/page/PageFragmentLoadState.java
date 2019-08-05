@@ -259,6 +259,12 @@ public class PageFragmentLoadState {
                 }
             }
         });
+        bridge.addListener("leadSectionComplete", new SynchronousBridgeListener() {
+            @Override
+            public void onMessage(JSONObject payload) {
+                fragment.onLeadSectionComplete();
+            }
+        });
         bridge.addListener("pageLoadComplete", new SynchronousBridgeListener() {
             @Override
             public void onMessage(JSONObject payload) {
@@ -595,9 +601,9 @@ public class PageFragmentLoadState {
 
         @Override
         public void onMessage(String message, JSONObject payload) {
-            if (fragment.isAdded() && inSync(payload)) {
+            //if (fragment.isAdded() && inSync(payload)) {
                 onMessage(payload);
-            }
+            //}
         }
 
         protected abstract void onMessage(JSONObject payload);

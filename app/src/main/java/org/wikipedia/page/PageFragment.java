@@ -778,7 +778,12 @@ public class PageFragment extends Fragment implements BackPressedHandler {
         tocHandler.scrollToSection(sectionAnchor);
     }
 
+    public void onLeadSectionComplete() {
+        L.d("ttfp: " + activeTimer.getElapsedMillis());
+    }
+
     public void onPageLoadComplete() {
+
         refreshView.setEnabled(true);
         requireActivity().invalidateOptionsMenu();
 

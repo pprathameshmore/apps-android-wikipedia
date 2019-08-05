@@ -118,6 +118,9 @@ bridge.registerListener( "displayLeadSection", function( payload ) {
     document.getElementById( "content" ).appendChild( content );
 
     applySectionTransforms(content, true);
+    window.requestAnimationFrame(function() {
+        bridge.sendMessage( "leadSectionComplete", { "ok": "ok" } );
+    });
 });
 
 function clearContents() {
